@@ -1,0 +1,52 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: zimOCR_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./zimOCR_PostgresDB/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  ocr_service:
+    build: ./OCRServesPy
+    container_name: zimOCR_ocr_service
+    restart: always
+    ports:
+      - "5001:5001"
+    depends_on:
+      - postgres
+
+  backend:
+    build: ./zimOCR_BACKEND
+    container_name: zimOCR_backend
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydatabase
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: mypassword
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - ocr_service
+
+  frontend:
+    build:
+      context: ./zimOCR_FRONTEND
+    container_name: zimOCR_frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./zimOCR_FRONTEND:/app
+      - /app/node_modules
+    command: ["npm", "start"]
+
+volumes:
+  postgres_data:

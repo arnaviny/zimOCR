@@ -1,0 +1,15 @@
+# Ignore Java build files
+target/
+*.class
+
+# Ignore Docker files
+*.env
+docker-compose.override.yml
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore sensitive data
+config/*.yml
+secrets/
