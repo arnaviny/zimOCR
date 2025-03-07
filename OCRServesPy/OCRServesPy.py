@@ -2,81 +2,69 @@ import os
 import base64
 import tempfile
 import re
+import requests
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pdf2image import convert_from_path
 import pytesseract
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
 
-def extract_data_from_text(text):
-    """
-    פונקציה לחילוץ נתונים מהטקסט שהתקבל מה-OCR ומסידורם במבנה JSON.
-    הפונקציה מנקה את הטקסט ומנסה לחלץ את:
-      - billOfLadingNumber
-      - containerNumber
-      - vessel
-      - voyageNumber
-      - departureDate
-      - arrivalDate
-      - originPort
-      - destinationPort
-      - cargoDetails (description, weightKg, quantity, volumeM3, hazardous)
-      - shipper, consignee, agent (לכל אחד: name, address, contact)
-      - shippingTerms (incoterms, freightCharges, paymentTerms)
-    """
-    data = {}
-    cleaned_text = re.sub(r'\s+', ' ', text)
+LLM_API_URL = "http://localhost:5002/api/llm"  # הפנייה לשירות ה-LLM
 
-    def extract_field(pattern, text, group=1, flags=0):
-        m = re.search(pattern, text, flags)
-        return m.group(group).strip() if m else None
+def validate_llm_output(data):
+    validation_rules = {
+        "billOfLadingNumber": r"^BOL-\d{6}$",
+        "containerNumber": r"^[A-Z]{3}[UJZ]{1}\d{7}$",
+        "vessel": r"^[\w\s\-]+$",
+        "voyageNumber": r"^[A-Z0-9\-]+$",
+        "departureDate": r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$",
+        "arrivalDate": r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$",
+        "originPort": r"^[\w\s\-]+$",
+        "destinationPort": r"^[\w\s\-]+$",
+        "description": r"^[\w\s\-,.]+$",
+        "weightKg": int,
+        "quantity": int,
+        "volumeM3": int,
+        "hazardous": bool,
+        "shipperName": r"^[\w\s\-]+$",
+        "shipperAddress": r"^[\w\s\-.,]+$",
+        "shipperContact": r"^[\w\s\-.,]+$",
+        "consigneeName": r"^[\w\s\-]+$",
+        "consigneeAddress": r"^[\w\s\-.,]+$",
+        "consigneeContact": r"^[\w\s\-.,]+$",
+        "agentName": r"^[\w\s\-]+$",
+        "agentAddress": r"^[\w\s\-.,]+$",
+        "agentContact": r"^[\w\s\-.,]+$",
+        "incoterms": r"^[A-Z]{3}$",
+        "freightCharges": r"^[\w\s\-]+$",
+        "paymentTerms": r"^[\w\s\-]+$"
+    }
 
-    data['billOfLadingNumber'] = extract_field(r'Bill of Lading Number[:\s]*?(BOL-[0-9\-]+)', cleaned_text, flags=re.IGNORECASE)
-    data['containerNumber'] = extract_field(r'Container Number[:\s]*?([A-Z0-9]+)', cleaned_text, flags=re.IGNORECASE)
-    data['vessel'] = extract_field(r'Vessel[:\s]*?(.+?)(?=\sVoyage Number|\sDeparture Date|$)', cleaned_text, flags=re.IGNORECASE)
-    data['voyageNumber'] = extract_field(r'Voyage Number[:\s]*?([A-Z0-9]+)', cleaned_text, flags=re.IGNORECASE)
-    data['departureDate'] = extract_field(r'Departure Date[:\s]*?([\d\-T:Z]+)', cleaned_text, flags=re.IGNORECASE)
-    data['arrivalDate'] = extract_field(r'Arrival Date[:\s]*?([\d\-T:Z]+)', cleaned_text, flags=re.IGNORECASE)
-    data['originPort'] = extract_field(r'Origin Port[:\s]*?([A-Za-z0-9 ]+)', cleaned_text, flags=re.IGNORECASE)
-    data['destinationPort'] = extract_field(r'Destination Port[:\s]*?([A-Za-z0-9 ]+)', cleaned_text, flags=re.IGNORECASE)
+    validated_data = {}
 
-    # חילוץ פרטי המטען:
-    cargo = {}
-    cargo['description'] = extract_field(r'Description[:\s]*?([A-Za-z0-9 ,]+)', cleaned_text, flags=re.IGNORECASE)
-    weight = extract_field(r'Weight \(Kg\)[:\s]*?(\d+)', cleaned_text, flags=re.IGNORECASE)
-    cargo['weightKg'] = int(weight) if weight and weight.isdigit() else None
-    quantity = extract_field(r'Quantity[:\s]*?(\d+)', cleaned_text, flags=re.IGNORECASE)
-    cargo['quantity'] = int(quantity) if quantity and quantity.isdigit() else None
-    volume = extract_field(r'Volume \(m3\)[:\s]*?(\d+)', cleaned_text, flags=re.IGNORECASE)
-    cargo['volumeM3'] = int(volume) if volume and volume.isdigit() else None
-    hazardous = extract_field(r'Hazardous[:\s]*?(True|False)', cleaned_text, flags=re.IGNORECASE)
-    cargo['hazardous'] = hazardous.capitalize() if hazardous else None
-    data['cargoDetails'] = cargo
+    for key, rule in validation_rules.items():
+        value = data.get(key, None)
+        if value is None:
+            validated_data[key] = None
+            continue
 
-    def extract_party(party_label):
-        pattern = party_label + r'[:\s]*(.*?)(?=\s(?:Shipper|Consignee|Agent|Shipping Terms|$))'
-        party_text = extract_field(pattern, cleaned_text, flags=re.IGNORECASE)
-        if not party_text:
-            return {}
-        party = {}
-        party['name'] = extract_field(r'Name[:\s]*?([^,]+)', party_text, flags=re.IGNORECASE)
-        party['address'] = extract_field(r'Address[:\s]*?([^,]+)', party_text, flags=re.IGNORECASE)
-        party['contact'] = extract_field(r'Contact[:\s]*?([^,]+)', party_text, flags=re.IGNORECASE)
-        return party
+        if isinstance(rule, str):
+            if not re.match(rule, str(value)):
+                validated_data[key] = None
+            else:
+                validated_data[key] = value
+        elif rule == int:
+            try:
+                validated_data[key] = int(value)
+            except ValueError:
+                validated_data[key] = None
+        elif rule == bool:
+            validated_data[key] = True if str(value).lower() == "true" else False if str(value).lower() == "false" else None
 
-    data['shipper'] = extract_party("Shipper")
-    data['consignee'] = extract_party("Consignee")
-    data['agent'] = extract_party("Agent")
-
-    shipping = {}
-    shipping['incoterms'] = extract_field(r'Incoterms[:\s]*?([A-Z]+)', cleaned_text, flags=re.IGNORECASE)
-    shipping['freightCharges'] = extract_field(r'Freight Charges[:\s]*?([A-Za-z]+)', cleaned_text, flags=re.IGNORECASE)
-    shipping['paymentTerms'] = extract_field(r'Payment Terms[:\s]*?([\w\s]+)', cleaned_text, flags=re.IGNORECASE)
-    data['shippingTerms'] = shipping
-
-    return data
+    return validated_data
 
 @app.route('/api/ocr', methods=['POST'])
 def ocr_endpoint():
@@ -87,20 +75,27 @@ def ocr_endpoint():
             temp_pdf.write(pdf_bytes)
             temp_pdf_path = temp_pdf.name
 
-        images = convert_from_path(temp_pdf_path)
-        ocr_text = ""
-        for image in images:
-            ocr_text += pytesseract.image_to_string(image) + "\n"
+        # ציון נתיב מפורש ל-poppler, במקרה שהבינארי pdftoppm אינו נמצא ב-PATH
+        images = convert_from_path(temp_pdf_path, poppler_path="/usr/bin")
+        ocr_text = "".join([pytesseract.image_to_string(image) for image in images])
 
-        extracted_data = extract_data_from_text(ocr_text)
+        # שולחים את הטקסט ל-LLM לקבלת JSON מובנה
+        prompt = f"Extract structured JSON from the following:\n{ocr_text}"
+        response = requests.post(LLM_API_URL, json={"prompt": prompt})
+        structured_data = response.json().get("response", {})
+
+        # ולידציה של הנתונים
+        validated_data = validate_llm_output(structured_data)
+
         os.remove(temp_pdf_path)
+
         return jsonify({
             "extractedText": ocr_text,
-            "extractedData": extracted_data
+            "structuredData": validated_data
         })
+
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001)
-

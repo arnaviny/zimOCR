@@ -4,3 +4,5 @@ pytesseract
 pdf2image
 reportlab
 requests
+transformers
+torch

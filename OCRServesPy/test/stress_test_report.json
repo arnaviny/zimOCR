@@ -1,0 +1,262 @@
+[
+    {
+        "concurrency": 1,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.967674732208252,
+        "stats_logs": [
+            {
+                "time": 1741360895.056857,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   116.33%   369.3MiB / 7.653GiB   4.71%     4.72MB / 128kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360897.959231,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   133.51%   368.8MiB / 7.653GiB   4.71%     4.76MB / 130kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360900.728161,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   135.94%   368.9MiB / 7.653GiB   4.71%     4.8MB / 132kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360903.4947278,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   107.99%   368.9MiB / 7.653GiB   4.71%     4.85MB / 134kB   1.01GB / 1.77GB   32"
+            }
+        ]
+    },
+    {
+        "concurrency": 2,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.9727990031242371,
+        "stats_logs": [
+            {
+                "time": 1741360906.513056,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   135.61%   369.6MiB / 7.653GiB   4.72%     4.89MB / 136kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360909.270486,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   134.00%   368.9MiB / 7.653GiB   4.71%     4.93MB / 138kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360912.0350049,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT   MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   108.90%   369MiB / 7.653GiB   4.71%     4.97MB / 140kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360915.0536509,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT   MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   104.30%   369MiB / 7.653GiB   4.71%     5.01MB / 142kB   1.01GB / 1.77GB   32"
+            }
+        ]
+    },
+    {
+        "concurrency": 3,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.983963668346405,
+        "stats_logs": [
+            {
+                "time": 1741360918.082697,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   134.41%   369.3MiB / 7.653GiB   4.71%     5.05MB / 144kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360920.838014,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   133.94%   369.2MiB / 7.653GiB   4.71%     5.09MB / 146kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360923.597427,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   107.42%   369.2MiB / 7.653GiB   4.71%     5.13MB / 148kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360926.628614,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   139.60%   369.2MiB / 7.653GiB   4.71%     5.17MB / 150kB   1.01GB / 1.77GB   32"
+            }
+        ]
+    },
+    {
+        "concurrency": 4,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.9719254374504089,
+        "stats_logs": [
+            {
+                "time": 1741360929.395091,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   135.15%   369.5MiB / 7.653GiB   4.71%     5.21MB / 152kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360932.1498501,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   107.49%   368.9MiB / 7.653GiB   4.71%     5.25MB / 154kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360935.184191,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT   MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   104.31%   369MiB / 7.653GiB   4.71%     5.29MB / 156kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360938.196318,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   142.89%   369.2MiB / 7.653GiB   4.71%     5.33MB / 158kB   1.01GB / 1.77GB   32"
+            }
+        ]
+    },
+    {
+        "concurrency": 5,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.9840674996376038,
+        "stats_logs": [
+            {
+                "time": 1741360940.9586291,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   0.05%     369.2MiB / 7.653GiB   4.71%     5.37MB / 160kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360944.7221062,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   111.13%   369.5MiB / 7.653GiB   4.72%     5.41MB / 162kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360947.735936,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   135.21%   369.4MiB / 7.653GiB   4.71%     5.45MB / 164kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360950.509459,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   137.92%   369.4MiB / 7.653GiB   4.71%     5.49MB / 166kB   1.01GB / 1.77GB   32"
+            }
+        ]
+    },
+    {
+        "concurrency": 6,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.9729743003845215,
+        "stats_logs": [
+            {
+                "time": 1741360953.28464,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   106.35%   369.3MiB / 7.653GiB   4.71%     5.53MB / 168kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360956.307151,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   134.70%   369.3MiB / 7.653GiB   4.71%     5.57MB / 170kB   1.01GB / 1.77GB   32"
+            },
+            {
+                "time": 1741360959.075435,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   135.34%   369.5MiB / 7.653GiB   4.71%     5.61MB / 172kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360961.836656,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   108.14%   369.3MiB / 7.653GiB   4.71%     5.65MB / 174kB   1.01GB / 1.78GB   32"
+            }
+        ]
+    },
+    {
+        "concurrency": 7,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.9825437664985657,
+        "stats_logs": [
+            {
+                "time": 1741360964.8626502,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   112.71%   369.2MiB / 7.653GiB   4.71%     5.69MB / 176kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360967.882038,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   135.46%   369.3MiB / 7.653GiB   4.71%     5.73MB / 178kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360970.666531,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   134.73%   369.8MiB / 7.653GiB   4.72%     5.77MB / 180kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360973.434752,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   109.00%   369.5MiB / 7.653GiB   4.71%     5.81MB / 182kB   1.01GB / 1.78GB   32"
+            }
+        ]
+    },
+    {
+        "concurrency": 8,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.9720293283462524,
+        "stats_logs": [
+            {
+                "time": 1741360976.477847,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   134.14%   369.8MiB / 7.653GiB   4.72%     5.85MB / 184kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360979.2385879,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   132.60%   369.4MiB / 7.653GiB   4.71%     5.89MB / 186kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360982.0161102,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   108.58%   369.4MiB / 7.653GiB   4.71%     5.94MB / 188kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360985.028794,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   111.83%   369.5MiB / 7.653GiB   4.71%     5.98MB / 190kB   1.01GB / 1.78GB   32"
+            }
+        ]
+    },
+    {
+        "concurrency": 9,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.971576988697052,
+        "stats_logs": [
+            {
+                "time": 1741360988.053901,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   133.34%   369.5MiB / 7.653GiB   4.72%     6.02MB / 192kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360990.82622,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   132.76%   369.7MiB / 7.653GiB   4.72%     6.06MB / 194kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360993.597002,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   108.60%   369.9MiB / 7.653GiB   4.72%     6.1MB / 196kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741360996.6190982,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   133.90%   369.6MiB / 7.653GiB   4.72%     6.14MB / 198kB   1.01GB / 1.78GB   32"
+            }
+        ]
+    },
+    {
+        "concurrency": 10,
+        "total_requests": 4,
+        "successful_requests": 4,
+        "failed_requests": 0,
+        "failure_rate_percent": 0.0,
+        "average_response_time": 0.9852827191352844,
+        "stats_logs": [
+            {
+                "time": 1741360999.391604,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   137.48%   369.6MiB / 7.653GiB   4.72%     6.18MB / 200kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741361002.163682,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   108.39%   369.4MiB / 7.653GiB   4.71%     6.22MB / 202kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741361005.178862,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT   MEM %     NET I/O          BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   103.30%   370MiB / 7.653GiB   4.72%     6.26MB / 204kB   1.01GB / 1.78GB   32"
+            },
+            {
+                "time": 1741361008.2109818,
+                "stats": "CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O         PIDS\n9bec263427c3   epic_brattain   140.78%   392.1MiB / 7.653GiB   5.00%     6.3MB / 206kB   1.01GB / 1.79GB   33"
+            }
+        ]
+    }
+]
