@@ -11,20 +11,20 @@ import tty
 import termios
 import threading
 import re
-import plotext as plt  # ודא שהתקנת את plotext (pip install plotext)
+import plotext as plt  # יש להתקין: pip install plotext
 
 # הגדרות
 TARGET_URL = "http://localhost:5001/api/ocr"   # כתובת שירות ה-OCR
-CONTAINER_NAME = "epic_brattain"               # שם הקונטיינר (יש לעדכן לפי הצורך)
+CONTAINER_NAME = "epic_brattain"               # שם הקונטיינר (עדכן בהתאם)
 START_CONCURRENCY = 1                         # נתחיל מ-1 בקשה בו זמנית
 MAX_CONCURRENCY = 10                          # נסיים ב-10 בקשות בו זמנית
 STEP = 1                                      # נעלה את הקונקרנציה בהדרגה ב-1
 TEST_DURATION = 10                            # כל רמת קונקרנציה תרוץ 10 שניות
 STATS_INTERVAL = 5                            # נאסוף נתוני docker stats כל 5 שניות
-MAX_SAFE_RESPONSE_TIME = 5                    # אם בקשה אחת לוקחת יותר מ-5 שניות, נציג אזהרה (נמשיך לבדיקה)
+MAX_SAFE_RESPONSE_TIME = 5                    # רק אזהרה אם בקשה לוקחת יותר מ-5 שניות
 MAX_FAILURE_PERCENT = 50                      # אם אחוז הבקשות שנכשלו עולה על 50%, נסיים את הבדיקה
 
-# רשימה גלובלית לעדכון נתוני הגרף (זמן, CPU %)
+# משתנה גלובלי לאחסון נתוני הגרף (זמן, CPU %)
 graph_data = []
 
 def send_request(session, b64_file):
@@ -80,6 +80,10 @@ def check_for_exit(timeout=0.1):
     return False
 
 def stress_test(input_b64_file):
+    """
+    מריץ בדיקת עומס ומחזיר רשימת תוצאות (rounds).
+    הנתונים שנאספו נשמרים גם לקובץ "stress_test_report.json".
+    """
     session = requests.Session()
     overall_results = []
     current_concurrency = START_CONCURRENCY
@@ -126,7 +130,7 @@ def stress_test(input_b64_file):
                     print(f"Warning: A request took {result.get('time', 0):.2f}s which exceeds the safe threshold.")
 
         if exit_flag:
-            print("Terminating test early due to failure threshold or manual exit.")
+            print("Terminating test early due to manual exit.")
             break
 
         successful = [r for r in concurrency_results if r.get("status") == 200]
@@ -159,20 +163,61 @@ def stress_test(input_b64_file):
     print("\nStress test complete. Report saved to stress_test_report.json", flush=True)
     return overall_results
 
+def ascii_summary(results):
+    """
+    מציג גרפים ASCII מסכמים את הביצועים לפי רמת Concurrency:
+      1. גרף עמודות של Successful vs Failed.
+      2. גרף קו של Average Response Time.
+    """
+    if not results:
+        print("No results to display.")
+        return
+
+    # הפיכת הנתונים לרשימות
+    concurrency_list = [r["concurrency"] for r in results]
+    success_list = [r["successful_requests"] for r in results]
+    fail_list = [r["failed_requests"] for r in results]
+    avg_time_list = [(r["average_response_time"] if r["average_response_time"] else 0) for r in results]
+
+    # גרף עמודות: Successful vs Failed
+    plt.clear_terminal()
+    plt.clear_figure()
+    plt.title("Successful vs Failed by Concurrency")
+    plt.xlabel("Concurrency")
+    plt.ylabel("Number of Requests")
+    concurrency_str_list = list(map(str, concurrency_list))
+    plt.bar(concurrency_str_list, success_list, label="Successful", color="green")
+    plt.bar(concurrency_str_list, fail_list, label="Failed", color="red")
+    plt.legend(True)
+    plt.show()
+    input("Press Enter to continue to the next graph...")
+
+    # גרף קו: Average Response Time
+    plt.clear_terminal()
+    plt.clear_figure()
+    plt.title("Average Response Time by Concurrency")
+    plt.xlabel("Concurrency")
+    plt.ylabel("Time (s)")
+    plt.plot(concurrency_str_list, avg_time_list, marker="dot", color="blue")
+    plt.show()
+    input("Press Enter to exit...")
+
 def real_time_terminal_plot():
     """
-    מציג גרף בזמן אמת בטרמינל באמצעות plotext.
+    מציג גרף בזמן אמת בטרמינל (במקרה הזה, רק עד לסיום הבדיקה).
     """
-    plt.clear_figure()
-    plt.title("Real-time CPU Usage")
-    plt.xlabel("Time (s)")
-    plt.ylabel("CPU Usage (%)")
     while True:
+        plt.clear_terminal()
+        plt.clear_figure()
+        plt.title("Real-time CPU Usage (%)")
+        plt.xlabel("Time (s)")
+        plt.ylabel("CPU Usage (%)")
         if graph_data:
             times, cpus = zip(*graph_data)
-            plt.clf()
-            plt.plot(times, cpus, marker="dot", color="blue")
-            plt.show()
+            start_time = times[0]
+            times_adj = [t - start_time for t in times]
+            plt.plot(times_adj, cpus, marker="dot", color="blue")
+        plt.show()
         time.sleep(0.5)
 
 if __name__ == "__main__":
@@ -181,11 +226,22 @@ if __name__ == "__main__":
         print(f"Input file {input_file} not found.")
         exit(1)
 
-    # הרצת בדיקת העומס בתור נושא נפרד
+    # הרצת בדיקת העומס בתור Thread
     stress_thread = threading.Thread(target=stress_test, args=(input_file,))
     stress_thread.start()
 
-    # הרצת הגרף בזמן אמת בטרמינל עם plotext
-    real_time_terminal_plot()
+    try:
+        # הרצת גרף בזמן אמת בטרמינל (ניתן לסיים ב-Ctrl+C)
+        real_time_terminal_plot()
+    except KeyboardInterrupt:
+        print("Real-time plot terminated by KeyboardInterrupt.")
 
     stress_thread.join()
+
+    # לאחר סיום הבדיקה (גם אם הופסקה ידנית), מציגים סיכום גרפי ASCII
+    try:
+        with open("stress_test_report.json", "r", encoding="utf-8") as f:
+            results = json.load(f)
+        ascii_summary(results)
+    except Exception as e:
+        print("Error loading or displaying report:", e)

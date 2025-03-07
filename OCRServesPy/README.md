@@ -1,119 +1,142 @@
-# OCRServesPy
+# OCR and LLM Service
 
-OCRServesPy הוא שירות OCR מבוסס Python ו-Flask להמרת קובצי PDF (המועברים כמחרוזת Base64) לטקסט, תוך שימוש ב-Tesseract לזיהוי טקסט וחילוץ נתונים רלוונטיים.
+This project provides an OCR and LLM service using a containerized setup. It includes an OCR API on port 5001 and an LLM API on port 5002. Below are the details for setting up, running, and testing the service.
 
-## תכולת הפרויקט
+## Installation and Setup
 
-- **API לזיהוי טקסט (OCR API):**
+### Prerequisites
+- Docker
+- Python 3.10+
+- `pip` for package management
 
-  - מקבל בקשת POST עם קובץ PDF כ-Base64.
-  - ממיר את ה-PDF לתמונות באמצעות `pdf2image`.
-  - משתמש ב-Tesseract לזיהוי טקסט.
-  - מחלץ נתונים ספציפיים באמצעות Regex ומסדר אותם ב-JSON.
+### Running the Service
 
-- **תמיכת CORS:**
+To build and run the containerized services, use the following commands:
 
-  - Flask-CORS מוגדר כך שכל מקור יוכל לגשת ל-API.
+```sh
+# Build the Docker image
+docker build -t zimocr_ocr_service .
 
-## דרישות מערכת
-
-- **Python 3.9 ומעלה**
-- **Poppler** (להמרת PDF לתמונות) – התקנה ב-macOS:
-  ```bash
-  brew install poppler
-  ```
-- **Tesseract** (מנוע OCR) – התקנה ב-macOS:
-  ```bash
-  brew install tesseract
-  ```
-
-## התקנה והרצה מקומית
-
-1. **שכפול הפרויקט:**
-
-   ```bash
-   git clone <repository_url>
-   cd OCRServesPy
-   ```
-
-2. **יצירת סביבת פיתוח והתקנת התלויות:**
-
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install --upgrade pip
-   pip install -r requirements.txt
-   ```
-
-3. **הרצת השירות:**
-
-   ```bash
-   python3 OCRServesPy.py
-   ```
-
-   השירות יאזין על `http://localhost:5000`.
-
-## שימוש ב-API
-
-### שליחת בקשה עם curl:
-
-```bash
-curl -X POST -H "Content-Type: text/plain" --data-binary "@path/to/BOLdemo_generated_1.pdf.b64" http://localhost:5000/api/ocr
+# Run the container
+docker run -p 5001:5001 -p 5002:5002 --name zimocr_container zimocr_ocr_service
 ```
 
-### שימוש ב-Postman:
+## API Reference
 
-- כתובת: `http://localhost:5000/api/ocr`
-- שיטת HTTP: `POST`
-- Header: `Content-Type: text/plain`
-- גוף הבקשה: תוכן הקובץ Base64 (`.pdf.b64`)
+### OCR API (Port 5001)
 
-## בדיקות דיוק
+#### **Endpoint:** `/api/ocr`
+**Method:** `POST`
+**Content-Type:** `text/plain`
 
-### ארגון קובצי הבדיקה:
-
-- `input/` – קובצי Base64 לבדיקה.
-- `ground_truth/` – קובצי טקסט עם התוצאה המצופה.
-
-### הרצת סקריפט הבדיקה:
-
-```bash
-python3 tests/test_suite.py
+##### **Request:**
+```json
+{
+  "file": "base64-encoded PDF content"
+}
 ```
 
-הסקריפט:
+##### **Response:**
+Returns a structured JSON object with extracted information.
 
-- שולח קבצים לבדיקה ל-API.
-- משווה את התוצאה עם הטקסט הצפוי.
-- מדפיס אחוזי דיוק.
-- שומר את התוצאות בקובץ `accuracy_results.json`.
+```json
+{
+  "billOfLadingNumber": "string",
+  "containerNumber": "string",
+  "vessel": "string",
+  "voyageNumber": "string",
+  "departureDate": "string (ISO 8601 format)",
+  "arrivalDate": "string (ISO 8601 format)",
+  "originPort": "string",
+  "destinationPort": "string",
+  "description": "string",
+  "weightKg": "integer",
+  "quantity": "integer",
+  "volumeM3": "integer",
+  "hazardous": "boolean",
+  "shipperName": "string",
+  "shipperAddress": "string",
+  "shipperContact": "string",
+  "consigneeName": "string",
+  "consigneeAddress": "string",
+  "consigneeContact": "string",
+  "agentName": "string",
+  "agentAddress": "string",
+  "agentContact": "string",
+  "incoterms": "string",
+  "freightCharges": "string",
+  "paymentTerms": "string"
+}
+```
 
-## הרצה באמצעות Docker
+### LLM API (Port 5002)
 
-1. **בניית התמונה:**
+#### **Endpoint:** `/api/llm`
+**Method:** `POST`
+**Content-Type:** `application/json`
 
-   ```bash
-   docker build -t ocr-service .
-   ```
+##### **Request:**
+```json
+{
+  "prompt": "Your input text here"
+}
+```
 
-2. **הרצת הקונטיינר:**
+##### **Response:**
+```json
+{
+  "response": "Generated text from LLM"
+}
+```
 
-    ```bash
-    docker run -p 5000:5000 amitbialik1/ocr-service:latest
-    ```
+## Running Tests
 
+The `test/` directory contains scripts for stress testing and validation.
 
-3. **משיכת הקונטיינר:**
+### **Automated Tests**
 
-    ```bash
-    docker pull amitbialik1/ocr-service:latest
-    ```
+Run the test scripts to verify the service:
 
-## פתרון בעיות
+```sh
+python3 test/stress_test.py
+```
 
-- **Poppler או Tesseract לא מותקנים:** ודא שהתקנת אותם והם זמינים ב-PATH.
-- **CORS חסום:** השירות תומך ב-CORS כברירת מחדל.
-- **התקנת תלויות חסרה:** ודא שהרצת `pip install -r requirements.txt`.
+This script performs:
+- Load testing with increasing concurrency levels
+- Real-time monitoring of Docker container performance
+- Failure rate analysis
+- Visual graph updates in real-time
 
-לשאלות נוספות, ניתן לפתוח Issue בריפוזיטורי.
+### **Manual Testing via cURL**
 
+To manually test the OCR API:
+```sh
+curl -X POST "http://localhost:5001/api/ocr" \
+     -H "Content-Type: text/plain" \
+     --data-binary "@test/sample_document.pdf.b64"
+```
+
+To manually test the LLM API:
+```sh
+curl -X POST "http://localhost:5002/api/llm" \
+     -H "Content-Type: application/json" \
+     -d '{"prompt": "Hello, generate text!"}'
+```
+
+## Using on Windows and Linux
+
+### **Windows**
+- Install Docker Desktop.
+- Use `Git Bash` or `PowerShell` for running commands.
+- Ensure `python` and `pip` are installed.
+
+### **Linux**
+- Install Docker using `apt` or `yum`.
+- Use `bash` to execute commands.
+- Ensure `python3` and `pip3` are installed.
+
+## Debugging and Logs
+For any issues, refer to the `logs/` directory inside the container for detailed debugging information. Running `docker logs zimocr_container` can also provide insights into service failures.
+
+---
+This document provides an overview of using and testing the OCR and LLM services. If you encounter issues, check the logs or run the test scripts for further analysis.
