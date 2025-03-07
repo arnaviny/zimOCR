@@ -1,0 +1,37 @@
+Bill of Lading
+
+Bill of Lading Number BOL-2025-0008
+Container Number ZIMU5315542
+Vessel ZIM Integrated Shipping Services 8
+Voyage Number VY2851
+Departure Date 2025-03-08T08:00:00Z
+Arrival Date 2025-03-12T08:00:00Z
+Origin Port Port C
+Destination Port Port D
+
+Cargo Details
+Description Consumer Goods
+Weight (Kg) 20248
+Quantity 57
+Volume (m3) 99
+Hazardous False
+
+Shipper
+Name Tech Innovators Inc.
+Address 456 Tech Park, City D, Country Y
+Contact info@techinnovators.com
+
+Consignee
+Name Home Essentials Ltd.
+Address 654 Residential Road, City G, Country Z
+Contact service@homeessentials.com
+
+Agent
+Name ZIM Agent Services
+Address Port Office, City H, Country Y
+Contact +1234567890
+
+Shipping Terms
+Incoterms CIF
+Freight Charges Collect
+Payment Terms 60 days net

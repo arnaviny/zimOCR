@@ -1,0 +1,37 @@
+Bill of Lading
+
+Bill of Lading Number BOL-2025-0009
+Container Number ZIMU1868448
+Vessel ZIM Integrated Shipping Services 9
+Voyage Number VY6952
+Departure Date 2025-03-09T08:00:00Z
+Arrival Date 2025-03-13T08:00:00Z
+Origin Port Port E
+Destination Port Port F
+
+Cargo Details
+Description Electronics
+Weight (Kg) 20918
+Quantity 141
+Volume (m3) 90
+Hazardous True
+
+Shipper
+Name Future Gadgets LLC
+Address 789 Innovation Drive, City E, Country Z
+Contact sales@futuregadgets.com
+
+Consignee
+Name Home Essentials Ltd.
+Address 654 Residential Road, City G, Country Z
+Contact service@homeessentials.com
+
+Agent
+Name Maritime Solutions
+Address Dock 12, Port I, Country X
+Contact +1987654321
+
+Shipping Terms
+Incoterms FOB
+Freight Charges Prepaid
+Payment Terms 30 days net

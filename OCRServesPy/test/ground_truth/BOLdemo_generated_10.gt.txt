@@ -1,0 +1,37 @@
+Bill of Lading
+
+Bill of Lading Number BOL-2025-0010
+Container Number ZIMU9743252
+Vessel ZIM Integrated Shipping Services 10
+Voyage Number VY1251
+Departure Date 2025-03-10T08:00:00Z
+Arrival Date 2025-03-17T08:00:00Z
+Origin Port Port A
+Destination Port Port B
+
+Cargo Details
+Description Industrial Equipment
+Weight (Kg) 27449
+Quantity 118
+Volume (m3) 79
+Hazardous False
+
+Shipper
+Name Tech Innovators Inc.
+Address 456 Tech Park, City D, Country Y
+Contact info@techinnovators.com
+
+Consignee
+Name Retail Distribution Inc.
+Address 456 Market Street, City B, Country Y
+Contact info@retaildistribution.com
+
+Agent
+Name ZIM Agent Services
+Address Port Office, City H, Country Y
+Contact +1234567890
+
+Shipping Terms
+Incoterms CIF
+Freight Charges Collect
+Payment Terms 60 days net

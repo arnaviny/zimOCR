@@ -1,0 +1,37 @@
+Bill of Lading
+
+Bill of Lading Number BOL-2025-0001
+Container Number ZIMU3867558
+Vessel ZIM Integrated Shipping Services 1
+Voyage Number VY3993
+Departure Date 2025-03-01T08:00:00Z
+Arrival Date 2025-03-07T08:00:00Z
+Origin Port Port C
+Destination Port Port D
+
+Cargo Details
+Description Electronics
+Weight (Kg) 28834
+Quantity 127
+Volume (m3) 72
+Hazardous False
+
+Shipper
+Name Global Electronics Ltd.
+Address 123 Industrial Way, City A, Country X
+Contact contact@globalelectronics.com
+
+Consignee
+Name Home Essentials Ltd.
+Address 654 Residential Road, City G, Country Z
+Contact service@homeessentials.com
+
+Agent
+Name Maritime Solutions
+Address Dock 12, Port I, Country X
+Contact +1987654321
+
+Shipping Terms
+Incoterms FOB
+Freight Charges Prepaid
+Payment Terms 30 days net

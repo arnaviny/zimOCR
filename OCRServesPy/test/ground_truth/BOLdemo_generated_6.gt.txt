@@ -1,0 +1,37 @@
+Bill of Lading
+
+Bill of Lading Number BOL-2025-0006
+Container Number ZIMU7261760
+Vessel ZIM Integrated Shipping Services 6
+Voyage Number VY3998
+Departure Date 2025-03-06T08:00:00Z
+Arrival Date 2025-03-10T08:00:00Z
+Origin Port Port G
+Destination Port Port H
+
+Cargo Details
+Description Industrial Equipment
+Weight (Kg) 22592
+Quantity 142
+Volume (m3) 74
+Hazardous False
+
+Shipper
+Name Tech Innovators Inc.
+Address 456 Tech Park, City D, Country Y
+Contact info@techinnovators.com
+
+Consignee
+Name Consumer Products Co.
+Address 321 Commercial Ave, City F, Country X
+Contact support@consumerproducts.com
+
+Agent
+Name Oceanic Logistics
+Address Terminal 3, Port J, Country Z
+Contact +1122334455
+
+Shipping Terms
+Incoterms EXW
+Freight Charges Prepaid
+Payment Terms 45 days net

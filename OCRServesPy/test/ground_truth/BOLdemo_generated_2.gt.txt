@@ -1,0 +1,37 @@
+Bill of Lading
+
+Bill of Lading Number BOL-2025-0002
+Container Number ZIMU7646356
+Vessel ZIM Integrated Shipping Services 2
+Voyage Number VY6248
+Departure Date 2025-03-02T08:00:00Z
+Arrival Date 2025-03-07T08:00:00Z
+Origin Port Port E
+Destination Port Port F
+
+Cargo Details
+Description Electronics
+Weight (Kg) 21923
+Quantity 149
+Volume (m3) 86
+Hazardous True
+
+Shipper
+Name Global Electronics Ltd.
+Address 123 Industrial Way, City A, Country X
+Contact contact@globalelectronics.com
+
+Consignee
+Name Consumer Products Co.
+Address 321 Commercial Ave, City F, Country X
+Contact support@consumerproducts.com
+
+Agent
+Name ZIM Agent Services
+Address Port Office, City H, Country Y
+Contact +1234567890
+
+Shipping Terms
+Incoterms EXW
+Freight Charges Prepaid
+Payment Terms 45 days net

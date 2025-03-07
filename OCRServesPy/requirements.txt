@@ -1,0 +1,6 @@
+Flask
+flask-cors
+pytesseract
+pdf2image
+reportlab
+requests

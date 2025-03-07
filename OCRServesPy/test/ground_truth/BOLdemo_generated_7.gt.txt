@@ -1,0 +1,37 @@
+Bill of Lading
+
+Bill of Lading Number BOL-2025-0007
+Container Number ZIMU6907236
+Vessel ZIM Integrated Shipping Services 7
+Voyage Number VY3284
+Departure Date 2025-03-07T08:00:00Z
+Arrival Date 2025-03-11T08:00:00Z
+Origin Port Port C
+Destination Port Port D
+
+Cargo Details
+Description Automotive Parts
+Weight (Kg) 24535
+Quantity 122
+Volume (m3) 87
+Hazardous True
+
+Shipper
+Name Global Electronics Ltd.
+Address 123 Industrial Way, City A, Country X
+Contact contact@globalelectronics.com
+
+Consignee
+Name Retail Distribution Inc.
+Address 456 Market Street, City B, Country Y
+Contact info@retaildistribution.com
+
+Agent
+Name ZIM Agent Services
+Address Port Office, City H, Country Y
+Contact +1234567890
+
+Shipping Terms
+Incoterms FOB
+Freight Charges Prepaid
+Payment Terms 30 days net

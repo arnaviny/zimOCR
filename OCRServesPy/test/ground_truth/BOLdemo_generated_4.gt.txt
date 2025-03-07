@@ -1,0 +1,37 @@
+Bill of Lading
+
+Bill of Lading Number BOL-2025-0004
+Container Number ZIMU7003637
+Vessel ZIM Integrated Shipping Services 4
+Voyage Number VY6085
+Departure Date 2025-03-04T08:00:00Z
+Arrival Date 2025-03-09T08:00:00Z
+Origin Port Port A
+Destination Port Port B
+
+Cargo Details
+Description Industrial Equipment
+Weight (Kg) 27099
+Quantity 135
+Volume (m3) 87
+Hazardous False
+
+Shipper
+Name Tech Innovators Inc.
+Address 456 Tech Park, City D, Country Y
+Contact info@techinnovators.com
+
+Consignee
+Name Retail Distribution Inc.
+Address 456 Market Street, City B, Country Y
+Contact info@retaildistribution.com
+
+Agent
+Name Oceanic Logistics
+Address Terminal 3, Port J, Country Z
+Contact +1122334455
+
+Shipping Terms
+Incoterms CIF
+Freight Charges Collect
+Payment Terms 60 days net

@@ -1,0 +1,37 @@
+Bill of Lading
+
+Bill of Lading Number BOL-2025-0003
+Container Number ZIMU6913697
+Vessel ZIM Integrated Shipping Services 3
+Voyage Number VY8917
+Departure Date 2025-03-03T08:00:00Z
+Arrival Date 2025-03-09T08:00:00Z
+Origin Port Port A
+Destination Port Port B
+
+Cargo Details
+Description Automotive Parts
+Weight (Kg) 27355
+Quantity 136
+Volume (m3) 67
+Hazardous True
+
+Shipper
+Name Tech Innovators Inc.
+Address 456 Tech Park, City D, Country Y
+Contact info@techinnovators.com
+
+Consignee
+Name Consumer Products Co.
+Address 321 Commercial Ave, City F, Country X
+Contact support@consumerproducts.com
+
+Agent
+Name ZIM Agent Services
+Address Port Office, City H, Country Y
+Contact +1234567890
+
+Shipping Terms
+Incoterms CIF
+Freight Charges Collect
+Payment Terms 60 days net
