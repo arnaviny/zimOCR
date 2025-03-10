@@ -1,0 +1,233 @@
+.bill-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--zim-gray, #f2f2f2);
+  min-height: calc(100vh - 60px);
+}
+
+.bill-details-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  position: relative;
+}
+
+.bill-details-header h1 {
+  margin: 0;
+  color: var(--zim-blue, #0b2e63);
+  font-size: 1.8rem;
+  flex-grow: 1;
+}
+
+.status-badge {
+  padding: 0.5rem 1rem;
+  background-color: var(--zim-blue, #0b2e63);
+  color: var(--zim-white, #ffffff);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.btn-back {
+  background-color: transparent;
+  color: var(--zim-blue, #0b2e63);
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.bill-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.details-section {
+  background-color: var(--zim-white, #ffffff);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.details-section:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.details-section h2 {
+  margin: 0 0 1.5rem 0;
+  color: var(--zim-blue, #0b2e63);
+  font-size: 1.4rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--zim-light-gray, #e8e8e8);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.detail-value {
+  font-size: 1.1rem;
+  color: var(--zim-dark-gray, #333333);
+}
+
+.bill-details-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.bill-details-actions button {
+  padding: 0.75rem 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: var(--zim-blue, #0b2e63);
+  border-color: var(--zim-blue, #0b2e63);
+}
+
+.btn-primary:hover {
+  background-color: #0a2753;
+  border-color: #0a2753;
+}
+
+.btn-outline {
+  color: var(--zim-blue, #0b2e63);
+  background-color: transparent;
+  border-color: var(--zim-blue, #0b2e63);
+}
+
+.btn-outline:hover {
+  color: #fff;
+  background-color: var(--zim-blue, #0b2e63);
+}
+
+.loading-message,
+.error-message {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loading-message h2 {
+  color: var(--zim-blue, #0b2e63);
+  margin-bottom: 1rem;
+}
+
+.error-message h2 {
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.error-message button {
+  margin-top: 1rem;
+}
+
+/* Spinner for loading state */
+.loading-message:after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 1rem auto;
+  border-radius: 50%;
+  border: 4px solid #e0e0e0;
+  border-top-color: var(--zim-blue, #0b2e63);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bill-details-container {
+    padding: 1rem;
+  }
+  
+  .bill-details-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .btn-back {
+    margin-bottom: 1rem;
+  }
+  
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .bill-details-actions {
+    flex-direction: column;
+  }
+  
+  .bill-details-actions button {
+    width: 100%;
+  }
+}
+
+/* Print styles */
+@media print {
+  .bill-details-container {
+    padding: 0;
+    background-color: white;
+  }
+  
+  .btn-back, .bill-details-actions {
+    display: none;
+  }
+  
+  .details-section {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+}

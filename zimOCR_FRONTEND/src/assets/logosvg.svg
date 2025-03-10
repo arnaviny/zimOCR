@@ -1,0 +1,90 @@
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+            <rect
+              x="50"
+              y="100"
+              width="300"
+              height="200"
+              fill="white"
+              stroke="#e0e0e0"
+              stroke-width="8"
+            />
+
+            <line
+              x1="50"
+              y1="130"
+              x2="350"
+              y2="130"
+              stroke="#e0e0e0"
+              stroke-width="4"
+            />
+            <line
+              x1="50"
+              y1="270"
+              x2="350"
+              y2="270"
+              stroke="#e0e0e0"
+              stroke-width="4"
+            />
+
+            <line
+              x1="100"
+              y1="100"
+              x2="100"
+              y2="300"
+              stroke="#e0e0e0"
+              stroke-width="3"
+            />
+            <line
+              x1="150"
+              y1="100"
+              x2="150"
+              y2="300"
+              stroke="#e0e0e0"
+              stroke-width="3"
+            />
+            <line
+              x1="200"
+              y1="100"
+              x2="200"
+              y2="300"
+              stroke="#e0e0e0"
+              stroke-width="4"
+            />
+            <line
+              x1="250"
+              y1="100"
+              x2="250"
+              y2="300"
+              stroke="#e0e0e0"
+              stroke-width="3"
+            />
+            <line
+              x1="300"
+              y1="100"
+              x2="300"
+              y2="300"
+              stroke="#e0e0e0"
+              stroke-width="3"
+            />
+            <circle cx="180" cy="200" r="6" fill="#e0e0e0" />
+            <circle cx="220" cy="200" r="6" fill="#e0e0e0" />
+
+            <rect x="50" y="100" width="20" height="20" fill="#e0e0e0" />
+            <rect x="330" y="100" width="20" height="20" fill="#e0e0e0" />
+            <rect x="50" y="280" width="20" height="20" fill="#e0e0e0" />
+            <rect x="330" y="280" width="20" height="20" fill="#e0e0e0" />
+
+            <path
+              d="M115,200 Q140,155,200,155 Q260,155,285,200 Q260,245,200,245 Q140,245,115,200 Z"
+              fill="#0b2e63"
+              stroke="#0b2e63"
+              stroke-width="0"
+            />
+
+            <circle cx="200" cy="200" r="35" fill="white" />
+
+            <circle cx="200" cy="200" r="20" fill="#0b2e63" />
+
+            <circle cx="190" cy="190" r="8" fill="white" />
+            <circle cx="210" cy="205" r="4" fill="white" />
+          </svg>

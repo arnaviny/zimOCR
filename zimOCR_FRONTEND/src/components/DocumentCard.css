@@ -1,0 +1,170 @@
+.document-card {
+  background-color: var(--zim-white, #ffffff);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.document-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.document-card.expanded {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.document-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--zim-light-gray, #e8e8e8);
+}
+
+.document-header h3 {
+  margin: 0;
+  color: var(--zim-blue, #0b2e63);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.document-status {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.status-indicator.approved {
+  background-color: #4caf50;
+}
+
+.status-indicator.rejected {
+  background-color: #f44336;
+}
+
+.status-indicator.pending {
+  background-color: #ff9800;
+}
+
+.document-content {
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.document-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.document-field {
+  flex: 1 1 calc(50% - 1rem);
+  min-width: 150px;
+  margin-bottom: 0.75rem;
+  padding-right: 1rem;
+}
+
+.document-field.full-width {
+  flex: 1 1 100%;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.field-value {
+  font-weight: 500;
+  color: var(--zim-dark-gray, #333333);
+}
+
+.field-value.description {
+  display: block;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-top: 0.25rem;
+  color: #495057;
+}
+
+.document-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--zim-light-gray, #e8e8e8);
+}
+
+.document-actions button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: rgba(11, 46, 99, 0.05);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--zim-blue, #0b2e63);
+  color: var(--zim-blue, #0b2e63);
+}
+
+.btn-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #3d8b40;
+}
+
+/* Animation for expanding/collapsing */
+.document-content-expand {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.document-content-expand.show {
+  max-height: 500px; /* Adjust as needed */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .document-field {
+    flex: 1 1 100%;
+  }
+  
+  .document-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .document-status {
+    margin-top: 0.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+}

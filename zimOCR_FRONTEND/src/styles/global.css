@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  direction: ltr;
+}
+
+body {
+  background-color: var(--zim-gray);
+  min-height: 100vh;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--zim-blue);
+  color: var(--zim-white);
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  color: var(--zim-dark-gray);
+}

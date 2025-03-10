@@ -1,0 +1,159 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+  margin: 2rem auto;
+}
+
+.crane-container-loader {
+  position: relative;
+  width: 150px;
+  height: 180px;
+}
+
+/* Crane structure */
+.crane {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 150px;
+}
+
+.crane-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 10px;
+  background-color: #0B2E63;
+  border-radius: 2px;
+}
+
+.crane-arm {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 60px;
+  background-color: #0B2E63;
+}
+
+.crane-cable {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 30px;
+  background-color: #777;
+  animation: cable-animation 2s infinite ease-in-out;
+}
+
+/* Container */
+.container {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 40px;
+  background-color: #0B2E63;
+  border-radius: 4px;
+  animation: container-animation 2s infinite ease-in-out;
+}
+
+.container:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 50px;
+  height: 5px;
+  background-color: #1d4380;
+  border-radius: 1px;
+}
+
+.container:after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  width: 50px;
+  height: 5px;
+  background-color: #1d4380;
+  border-radius: 1px;
+}
+
+/* Container ridges */
+.container-ridges {
+  position: absolute;
+  top: 25px;
+  left: 5px;
+  width: 50px;
+  height: 5px;
+  background-color: #1d4380;
+  border-radius: 1px;
+}
+
+/* Base */
+.base {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 2px;
+}
+
+/* Animation for container and cable */
+@keyframes container-animation {
+  0% {
+    top: 100px;
+  }
+  50% {
+    top: 120px;
+  }
+  100% {
+    top: 100px;
+  }
+}
+
+@keyframes cable-animation {
+  0% {
+    height: 30px;
+  }
+  50% {
+    height: 50px;
+  }
+  100% {
+    height: 30px;
+  }
+}
+
+/* Loading text */
+.loading-text {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 16px;
+  color: #0B2E63;
+  font-weight: 500;
+}
+
+.loading-text:after {
+  content: "...";
+  animation: dots-animation 1.5s infinite;
+}
+
+@keyframes dots-animation {
+  0% { content: "."; }
+  33% { content: ".."; }
+  66% { content: "..."; }
+  100% { content: "."; }
+}
