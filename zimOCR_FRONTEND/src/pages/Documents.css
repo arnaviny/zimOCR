@@ -1,0 +1,245 @@
+/* Documents.css */
+.documents {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.documents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  color: var(--zim-dark-gray);
+  margin: 0;
+}
+
+.search-bar {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.documents-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 950px) {
+  .documents-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .documents-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .search-bar {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.error-container {
+  background-color: #fff1f0;
+  border: 1px solid #ffccc7;
+  padding: 1.5rem;
+  border-radius: 4px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.error-message {
+  color: #cf1322;
+  margin-bottom: 1rem;
+}
+
+.no-documents {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 4px;
+  color: var(--zim-dark-gray);
+  width: 100%;
+}
+
+/* Mock data notice */
+.mock-data-notice {
+  background-color: #fff7e6;
+  border: 1px solid #ffe58f;
+  color: #976500;
+  padding: 0.8rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.mock-data-notice p {
+  margin: 0;
+}
+
+.mock-data-notice strong {
+  font-weight: 600;
+}
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--zim-white);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.file-input-container {
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.file-input-container input[type="file"] {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.file-input-container label {
+  display: block;
+  padding: 1rem;
+  border: 2px dashed #ddd;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.file-input-container label:hover {
+  border-color: var(--zim-blue);
+  background-color: rgba(11, 46, 99, 0.05);
+}
+
+.file-info {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.file-info p {
+  margin: 0.5rem 0;
+}
+
+.progress-container {
+  margin: 1.5rem 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--zim-blue);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: var(--zim-dark-gray);
+}
+
+.upload-result {
+  padding: 0.8rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.upload-result.success {
+  background-color: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+}
+
+.upload-result.error {
+  background-color: #fff2f0;
+  color: #ff4d4f;
+  border: 1px solid #ffccc7;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Floating button for adding documents */
+.floating-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--zim-blue);
+  color: var(--zim-white);
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  transition: all 0.3s;
+}
+
+.floating-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}

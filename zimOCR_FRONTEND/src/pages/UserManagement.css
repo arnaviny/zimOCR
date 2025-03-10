@@ -1,0 +1,42 @@
+.user-management {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--zim-dark-gray);
+}
+
+.table-container {
+  background-color: var(--zim-white);
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #fafafa;
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+.btn {
+  margin-right: 0.5rem;
+}
